@@ -9,6 +9,9 @@ import GitHubActivity from '../components/GitHubActivity';
 import GitHubProjects from '../components/GitHubProjects';
 import GlitchTitle from '../components/GlitchTitle';
 import RadarChart from '../components/RadarChart';
+import AnimatedBackground from '../components/AnimatedBackground';
+import TimelineItem from '../components/TimelineItem';
+import AnimatedAvatar from '../components/AnimatedAvatar';
 
 type HomeProps = {
   toggleTheme: () => void;
@@ -113,21 +116,22 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
       <main className="max-w-6xl mx-auto px-4 pt-28 pb-24 space-y-24">
         {/* Hero Section */}
         <Section id="home">
-          <div className="text-center relative">
-            <div className="code-flow absolute inset-0 rounded-3xl opacity-20"></div>
+          <div className="text-center relative overflow-hidden">
+            <AnimatedBackground />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="relative z-10"
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="gradient-text">Hi, I'm Dheeraj 👋</span>
-                <br />
+              <GlitchTitle className="text-5xl md:text-7xl font-bold mb-6">
+                Hi, I'm Dheeraj 👋
+              </GlitchTitle>
+              <h2 className="text-4xl md:text-6xl font-bold mb-4">
                 <span className="sport-gradient">Engineer, Cricket Lover,</span>
                 <br />
                 <span className="gradient-text">Lifelong Debugger</span>
-              </h1>
+              </h2>
               <motion.p 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
@@ -197,15 +201,31 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
               className="relative"
             >
               <div className="glass glass-hover p-8 text-center">
-                <div className="w-48 h-48 mx-auto mb-6 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-full flex items-center justify-center text-8xl">
-                  👨‍💻
-                </div>
+                <AnimatedAvatar className="mx-auto mb-6" size={180} />
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Dheeraj Vemula</h3>
                 <p className="text-gray-600 mb-4">Test Automation Engineer</p>
                 <div className="flex flex-wrap justify-center gap-2">
-                  <span className="px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-sm">🏏 Cricket Player</span>
-                  <span className="px-3 py-1 bg-accent-secondary/10 text-accent-secondary rounded-full text-sm">👕 Fashion Lover</span>
-                  <span className="px-3 py-1 bg-accent-tertiary/10 text-accent-tertiary rounded-full text-sm">🌍 Traveler</span>
+                  <motion.span 
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-sm flex items-center gap-2"
+                  >
+                    <span className="cricket-bounce">🏏</span>
+                    Cricket Player
+                  </motion.span>
+                  <motion.span 
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 bg-accent-secondary/10 text-accent-secondary rounded-full text-sm flex items-center gap-2"
+                  >
+                    <span className="floating">👕</span>
+                    Fashion Lover
+                  </motion.span>
+                  <motion.span 
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 bg-accent-tertiary/10 text-accent-tertiary rounded-full text-sm flex items-center gap-2"
+                  >
+                    <span className="floating">🌍</span>
+                    Traveler
+                  </motion.span>
                 </div>
               </div>
             </motion.div>
@@ -215,35 +235,28 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
         {/* Timeline Section */}
         <Section id="timeline">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 gradient-text">My Journey</h2>
+            <GlitchTitle className="text-4xl font-bold mb-4">My Journey</GlitchTitle>
             <p className="text-xl text-gray-600">From first "Hello World" to building amazing automation frameworks</p>
           </div>
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-tertiary rounded-full"></div>
+            <motion.div
+              initial={{ height: 0 }}
+              whileInView={{ height: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5 }}
+              className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-tertiary rounded-full"
+            />
             <div className="space-y-12">
               {timeline.map((item, idx) => (
-                <motion.div
+                <TimelineItem
                   key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: idx * 0.1 }}
-                  className={`relative flex items-center ${idx % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                >
-                  <div className={`w-1/2 ${idx % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="glass glass-hover p-6">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`text-4xl cricket-bounce`}>{item.icon}</div>
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
-                          <p className="text-sm text-gray-500 font-medium">{item.year}</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 leading-relaxed">{item.description}</p>
-                    </div>
-                  </div>
-                  <div className={`absolute left-6 w-4 h-4 rounded-full bg-${item.color} shadow-glow`}></div>
-                </motion.div>
+                  year={item.year}
+                  title={item.title}
+                  description={item.description}
+                  icon={item.icon}
+                  color={item.color}
+                  isLeft={idx % 2 === 0}
+                />
               ))}
             </div>
           </div>
@@ -269,6 +282,7 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
                   description={project.description} 
                   tags={project.tags}
                   link={project.link}
+                  icon={project.icon}
                 />
               </motion.div>
             ))}
