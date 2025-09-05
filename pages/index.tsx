@@ -50,7 +50,7 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
     },
     { 
       year: 'Life Outside Work', 
-      title: '🏏 Cricket, Travel & Fashion', 
+      title: '🏏 Cricket, Travel & Adventure', 
       description: 'Playing cricket in local team, exploring new places, and building strong friendships beyond work.',
       icon: '🏏',
       color: 'accent-cricket'
@@ -90,7 +90,7 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
 
   const funFacts = [
     { icon: '🏏', text: 'Cricket player in a local team' },
-    { icon: '👕', text: 'Bright, casual fashion sense' },
+    { icon: '🎯', text: 'Problem solver & team player' },
     { icon: '🌍', text: 'Loves travel & exploring' },
     { icon: '☕', text: 'Coffee before code' },
     { icon: '🤝', text: 'Believes in meaningful friendships beyond work' },
@@ -116,118 +116,476 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
       <main className="max-w-6xl mx-auto px-4 pt-28 pb-24 space-y-24">
         {/* Hero Section */}
         <Section id="home">
-          <div className="text-center relative overflow-hidden">
+          <div className="relative overflow-hidden min-h-screen flex items-center">
             <AnimatedBackground />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative z-10"
-            >
-              <GlitchTitle className="text-5xl md:text-7xl font-bold mb-6">
-                Hi, I'm Dheeraj 👋
-              </GlitchTitle>
-              <h2 className="text-4xl md:text-6xl font-bold mb-4">
-                <span className="sport-gradient">Engineer, Cricket Lover,</span>
-                <br />
-                <span className="gradient-text">Lifelong Debugger</span>
-              </h2>
-              <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ delay: 0.5 }} 
-                className="text-xl md:text-2xl text-gray-600 mb-8 font-medium"
-              >
-                Breaking Code, Building Quality — and having fun while doing it
-              </motion.p>
+            
+            {/* Cricket-themed animated background elements */}
+            <div className="absolute inset-0 -z-10">
+              <div className="absolute top-20 left-10 w-20 h-20 bg-accent-cricket/10 rounded-full animate-pulse"></div>
+              <div className="absolute top-40 right-20 w-16 h-16 bg-accent-primary/10 rounded-full animate-bounce"></div>
+              <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-accent-secondary/10 rounded-full animate-ping"></div>
+              <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-accent-tertiary/10 rounded-full animate-pulse"></div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+              {/* Left side - Text content */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8 }}
-                className="flex flex-wrap justify-center gap-4 mb-8"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-left lg:text-left"
               >
-                {funFacts.map((fact, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 + index * 0.1 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-md"
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-6"
+                >
+                  <span className="inline-block px-4 py-2 bg-accent-primary/10 text-accent-primary rounded-full text-sm font-semibold mb-4">
+                    👋 Welcome to my world
+                  </span>
+                </motion.div>
+
+                <GlitchTitle className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
+                  Hi, I'm Dheeraj
+                </GlitchTitle>
+                
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
+                >
+                  <span className="sport-gradient">Engineer • Cricket Lover •</span>
+                  <br />
+                  <span className="gradient-text">Lifelong Debugger</span>
+                </motion.h2>
+                
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 0.6 }} 
+                  className="text-xl md:text-2xl text-gray-600 mb-8 font-medium leading-relaxed"
+                >
+                  "Breaking Code, Building Quality — and having fun while doing it."
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="flex flex-wrap gap-3 mb-8"
+                >
+                  {funFacts.map((fact, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1 + index * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20"
+                    >
+                      <span className="text-xl">{fact.icon}</span>
+                      <span className="text-sm font-medium text-gray-700">{fact.text}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <motion.a 
+                    href="#about" 
+                    whileHover={{ scale: 1.05 }} 
+                    whileTap={{ scale: 0.98 }} 
+                    className="inline-block px-8 py-4 rounded-2xl animated-gradient text-white font-bold text-lg shadow-glow-lg text-center"
                   >
-                    <span className="text-2xl">{fact.icon}</span>
-                    <span className="text-sm font-medium text-gray-700">{fact.text}</span>
-                  </motion.div>
-                ))}
+                    Let's Get to Know Each Other →
+                  </motion.a>
+                  <motion.a 
+                    href="#projects" 
+                    whileHover={{ scale: 1.05 }} 
+                    whileTap={{ scale: 0.98 }} 
+                    className="inline-block px-8 py-4 rounded-2xl border-2 border-accent-primary text-accent-primary font-bold text-lg hover:bg-accent-primary hover:text-white transition-all duration-300 text-center"
+                  >
+                    View My Work
+                  </motion.a>
+                </motion.div>
               </motion.div>
-              <motion.a 
-                href="#about" 
-                whileHover={{ scale: 1.05 }} 
-                whileTap={{ scale: 0.98 }} 
-                className="inline-block px-8 py-4 rounded-2xl animated-gradient text-white font-bold text-lg shadow-glow-lg"
+
+              {/* Right side - Visual elements */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
               >
-                Let's Get to Know Each Other →
-            </motion.a>
-            </motion.div>
+                {/* Main profile image container */}
+                <div className="relative">
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                    className="relative z-10"
+                  >
+                    <div className="w-80 h-80 mx-auto relative">
+                      {/* Cricket-themed background circle */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 via-accent-secondary/20 to-accent-tertiary/20 rounded-full animate-pulse"></div>
+                      <div className="absolute inset-2 bg-gradient-to-br from-accent-cricket/30 to-accent-sport/30 rounded-full"></div>
+                      
+                      {/* Profile image placeholder - using cricket theme */}
+                      <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                        <div className="w-full h-full bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center text-white text-6xl">
+                          🏏
+                        </div>
+                        {/* Overlay with cricket elements */}
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <div className="text-white text-8xl cricket-bounce">🏏</div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Floating elements around the image */}
+                  <motion.div
+                    animate={{ 
+                      y: [0, -10, 0],
+                      rotate: [0, 5, 0]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute -top-4 -right-4 w-16 h-16 bg-accent-primary/20 rounded-full flex items-center justify-center text-2xl"
+                  >
+                    💻
+                  </motion.div>
+                  
+                  <motion.div
+                    animate={{ 
+                      y: [0, 10, 0],
+                      rotate: [0, -5, 0]
+                    }}
+                    transition={{ 
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                    className="absolute -bottom-4 -left-4 w-16 h-16 bg-accent-cricket/20 rounded-full flex items-center justify-center text-2xl"
+                  >
+                    🏏
+                  </motion.div>
+
+                  <motion.div
+                    animate={{ 
+                      y: [0, -15, 0],
+                      x: [0, 5, 0]
+                    }}
+                    transition={{ 
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                    className="absolute top-1/2 -right-8 w-12 h-12 bg-accent-secondary/20 rounded-full flex items-center justify-center text-xl"
+                  >
+                    ⚡
+                  </motion.div>
+                </div>
+
+                {/* Scroll indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2 }}
+                  className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400"
+                >
+                  <span className="text-sm mb-2">Scroll to explore</span>
+                  <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center"
+                  >
+                    <motion.div
+                      animate={{ y: [0, 12, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                      className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+                    />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
+        </Section>
+
+        {/* Featured Projects Preview */}
+        <Section id="featured-projects">
+          <div className="text-center mb-12">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl font-bold mb-4 gradient-text"
+            >
+              Featured Projects
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-gray-600"
+            >
+              Some of my favorite projects that showcase my skills and passion
+            </motion.p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {personalProjects.slice(0, 3).map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <div className="glass glass-hover p-6 h-full flex flex-col">
+                  <div className="text-4xl mb-4 text-center group-hover:scale-110 transition-transform duration-300">
+                    {project.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-accent-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-xs font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center justify-center px-4 py-2 bg-accent-primary text-white rounded-lg font-medium text-sm hover:bg-accent-primary/90 transition-colors"
+                  >
+                    View Project →
+                  </motion.a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="text-center mt-12"
+          >
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-8 py-3 border-2 border-accent-primary text-accent-primary font-bold rounded-xl hover:bg-accent-primary hover:text-white transition-all duration-300"
+            >
+              View All Projects
+            </motion.a>
+          </motion.div>
         </Section>
 
         {/* About Me Section */}
         <Section id="about">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl font-bold mb-6 gradient-text"
+            >
+              About Me
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+            >
+              Get to know the person behind the code
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left side - Personal photo and quick intro */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <h2 className="text-4xl font-bold mb-6 gradient-text">About Me</h2>
-              <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                <p>
-                  I'm a Test Automation Engineer from Hyderabad with 10+ years in IT. But beyond work, I'm a cricket enthusiast, fashion explorer, traveler, and someone who treats debugging life with as much care as debugging code.
-                </p>
-                <p>
-                  When I'm not writing automation scripts or fixing bugs, you'll find me on the cricket field, exploring new places, or trying out the latest fashion trends. I believe that the best solutions come from a perfect blend of technical expertise and life experiences.
-                </p>
-                <p>
-                  My philosophy? Every bug is a puzzle waiting to be solved, every project is a story waiting to be told, and every day is an opportunity to learn something new while having fun doing it!
-                </p>
+              <div className="relative">
+                {/* Main photo container with cricket theme */}
+                <div className="w-96 h-96 mx-auto relative">
+                  {/* Background decorative elements */}
+                  <div className="absolute -inset-4 bg-gradient-to-br from-accent-primary/20 via-accent-secondary/20 to-accent-tertiary/20 rounded-full animate-pulse"></div>
+                  <div className="absolute -inset-2 bg-gradient-to-br from-accent-cricket/30 to-accent-sport/30 rounded-full"></div>
+                  
+                  {/* Main photo placeholder - cricket themed */}
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                    <div className="w-full h-full bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center text-white text-8xl">
+                      🏏
+                    </div>
+                    {/* Overlay with personal touch */}
+                    <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                      <div className="text-white text-9xl cricket-bounce">🏏</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating skill badges */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  className="absolute -top-4 -right-4 glass glass-hover p-3 rounded-full"
+                >
+                  <span className="text-2xl">💻</span>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
+                  className="absolute -bottom-4 -left-4 glass glass-hover p-3 rounded-full"
+                >
+                  <span className="text-2xl cricket-bounce">🏏</span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.9, duration: 0.6 }}
+                  className="absolute top-1/2 -right-8 glass glass-hover p-3 rounded-full"
+                >
+                  <span className="text-xl">⚡</span>
+                </motion.div>
               </div>
             </motion.div>
+
+            {/* Right side - Content */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="space-y-8"
             >
-              <div className="glass glass-hover p-8 text-center">
-                <AnimatedAvatar className="mx-auto mb-6" size={180} />
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Dheeraj Vemula</h3>
-                <p className="text-gray-600 mb-4">Test Automation Engineer</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  <motion.span 
-                    whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-sm flex items-center gap-2"
-                  >
-                    <span className="cricket-bounce">🏏</span>
-                    Cricket Player
-                  </motion.span>
-                  <motion.span 
-                    whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 bg-accent-secondary/10 text-accent-secondary rounded-full text-sm flex items-center gap-2"
-                  >
-                    <span className="floating">👕</span>
-                    Fashion Lover
-                  </motion.span>
-                  <motion.span 
-                    whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 bg-accent-tertiary/10 text-accent-tertiary rounded-full text-sm flex items-center gap-2"
-                  >
-                    <span className="floating">🌍</span>
-                    Traveler
-                  </motion.span>
-                </div>
+              <div>
+                <h3 className="text-3xl font-bold text-gray-800 mb-4">Dheeraj Vemula</h3>
+                <p className="text-xl text-accent-primary font-semibold mb-6">Test Automation Engineer</p>
               </div>
+
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  I'm a Test Automation Engineer from Hyderabad with <strong>10+ years in IT</strong>. But beyond work, I'm a cricket enthusiast, adventure seeker, traveler, and someone who treats debugging life with as much care as debugging code.
+                </motion.p>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
+                >
+                  When I'm not writing automation scripts or fixing bugs, you'll find me on the cricket field, exploring new places, or seeking new adventures. I believe that the best solutions come from a perfect blend of technical expertise and life experiences.
+                </motion.p>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.8 }}
+                  className="text-accent-primary font-semibold"
+                >
+                  My philosophy? Every bug is a puzzle waiting to be solved, every project is a story waiting to be told, and every day is an opportunity to learn something new while having fun doing it!
+                </motion.p>
+              </div>
+
+              {/* Quick stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1 }}
+                className="grid grid-cols-2 gap-6 pt-6"
+              >
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent-primary mb-2">10+</div>
+                  <div className="text-sm text-gray-600">Years Experience</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent-secondary mb-2">50+</div>
+                  <div className="text-sm text-gray-600">Projects Completed</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent-tertiary mb-2">🏏</div>
+                  <div className="text-sm text-gray-600">Cricket Player</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent-cricket mb-2">∞</div>
+                  <div className="text-sm text-gray-600">Bugs Fixed</div>
+                </div>
+              </motion.div>
+
+              {/* Action buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1.2 }}
+                className="flex flex-col sm:flex-row gap-4 pt-6"
+              >
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-3 bg-accent-primary text-white rounded-xl font-semibold text-center hover:bg-accent-primary/90 transition-colors"
+                >
+                  Let's Connect
+                </motion.a>
+                <motion.a
+                  href="#timeline"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-3 border-2 border-accent-primary text-accent-primary rounded-xl font-semibold text-center hover:bg-accent-primary hover:text-white transition-all duration-300"
+                >
+                  My Journey
+                </motion.a>
+              </motion.div>
             </motion.div>
           </div>
         </Section>
@@ -264,33 +622,83 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
 
         {/* Projects Section */}
         <Section id="projects">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 gradient-text">Personal Projects</h2>
-            <p className="text-xl text-gray-600">Some fun projects I've built when not debugging or playing cricket</p>
+          <div className="text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl font-bold mb-6 gradient-text"
+            >
+              Personal Projects
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+            >
+              Some fun projects I've built when not debugging or playing cricket
+            </motion.p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {personalProjects.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
               >
-                <ProjectCard 
-                  title={project.title} 
-                  description={project.description} 
-                  tags={project.tags}
-                  link={project.link}
-                  icon={project.icon}
-                />
+                <div className="glass glass-hover p-6 h-full flex flex-col hover-lift">
+                  <div className="text-5xl mb-4 text-center group-hover:scale-110 transition-transform duration-300">
+                    {project.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-accent-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-sm font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center justify-center px-6 py-3 bg-accent-primary text-white rounded-xl font-semibold hover:bg-accent-primary/90 transition-colors"
+                  >
+                    View Project →
+                  </motion.a>
+                </div>
               </motion.div>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold mb-6 text-gray-800">Recent GitHub Activity</h3>
-            <GitHubProjects username="vemuladheeraj" />
-          </div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h3 className="text-3xl font-bold mb-8 text-gray-800">Recent GitHub Activity</h3>
+            <div className="glass glass-hover p-8">
+              <GitHubProjects username="vemuladheeraj" />
+            </div>
+          </motion.div>
         </Section>
 
         {/* Fun Stuff Section */}
@@ -345,9 +753,9 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
                   <p className="text-gray-600">Playing in a local team, because every good debugger needs a good break!</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-6xl mb-4 floating">👕</div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-2">Fashion Explorer</h4>
-                  <p className="text-gray-600">Bright, casual fashion sense that matches my bright personality!</p>
+                  <div className="text-6xl mb-4 floating">🎯</div>
+                  <h4 className="text-xl font-bold text-gray-800 mb-2">Problem Solver</h4>
+                  <p className="text-gray-600">Approaching challenges with strategy and creativity!</p>
                 </div>
                 <div className="text-center">
                   <div className="text-6xl mb-4 floating">🌍</div>
@@ -468,6 +876,19 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
         </Section>
 
       </main>
+
+      {/* Back to Top Button */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="back-to-top"
+        aria-label="Back to top"
+      >
+        ↑
+      </motion.button>
 
       <footer className="text-center text-gray-500 pb-10 pt-8">
         <div className="glass glass-hover p-6 max-w-2xl mx-auto">
