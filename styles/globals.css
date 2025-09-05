@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1020;
+  --card: rgba(255, 255, 255, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(1200px 800px at 20% -20%, rgba(0, 229, 255, 0.08), transparent),
+    radial-gradient(1000px 600px at 120% 20%, rgba(184, 107, 255, 0.06), transparent),
+    var(--bg);
+  color: white;
+}
+
+.glass {
+  @apply bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-glow;
+}
+
+.neon-text {
+  text-shadow: 0 0 6px rgba(0, 229, 255, 0.7), 0 0 12px rgba(0, 229, 255, 0.5);
+}
+
+
