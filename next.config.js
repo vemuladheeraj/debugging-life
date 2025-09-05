@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
 
-const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
-const isUserOrOrgSite = /\.github\.io$/i.test(repoName);
+const repoName = 'debugging-life';
+const isUserOrOrgSite = false;
 
 const nextConfig = {
   output: 'export',
