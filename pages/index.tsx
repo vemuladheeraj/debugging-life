@@ -6,6 +6,8 @@ import ProjectCard from '../components/ProjectCard';
 import SkillItem from '../components/SkillItem';
 import BugEasterEgg from '../components/BugEasterEgg';
 import GitHubActivity from '../components/GitHubActivity';
+import GlitchTitle from '../components/GlitchTitle';
+import RadarChart from '../components/RadarChart';
 
 type HomeProps = {
   toggleTheme: () => void;
@@ -45,17 +47,17 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
       <main className="max-w-6xl mx-auto px-4 pt-28 pb-24 space-y-24">
         <Section id="home">
           <div className="text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-extrabold neon-text"
-            >
+            <GlitchTitle className="text-4xl md:text-6xl neon-text">
               👨‍💻 Dheeraj Vemula — Breaking Code, Building Quality 🚀
-            </motion.h1>
+            </GlitchTitle>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 text-white/80">
-              Test Automation Engineer • Selenium • API • CI/CD • SQL
+              Test Automation Engineer · Selenium · API · CI/CD · SQL
             </motion.p>
+            <motion.div className="mt-8 flex items-center justify-center gap-3 text-xs text-white/70">
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Flaky ⟶ Stable</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Speed ⟶ x2</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Coverage ⟶ 95%</span>
+            </motion.div>
             <motion.a href="#journey" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="inline-block mt-8 px-6 py-3 rounded-xl bg-gradient-to-r from-neon-blue to-neon-purple text-black font-semibold shadow-glow">
               Start Journey
             </motion.a>
@@ -63,14 +65,15 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
         </Section>
 
         <Section id="journey">
-          <h2 className="text-3xl font-bold mb-6">Career Journey</h2>
+          <h2 className="text-3xl font-bold mb-2">Career Journey</h2>
+          <p className="mb-6 text-white/75">Gamified milestones — unlock achievements as you scroll.</p>
           <div className="relative pl-6">
             <div className="absolute left-1 top-0 bottom-0 w-1 bg-gradient-to-b from-neon-blue to-neon-purple rounded" />
             <div className="space-y-10">
               {milestones.map((m, idx) => (
-                <motion.div key={m.company} initial={{ x: 20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="relative">
+                <motion.div key={m.company} initial={{ x: 20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="relative group">
                   <div className="absolute -left-7 top-2 h-4 w-4 rounded-full bg-neon-blue shadow-glow" />
-                  <div className="glass p-5">
+                  <div className="glass p-5 border border-transparent group-hover:border-neon-blue/40 transition-colors">
                     <div className="flex items-center justify-between">
                       <h3 className="text-xl font-semibold">{m.company}</h3>
                       <span className="text-white/70">{m.years}</span>
@@ -81,6 +84,7 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
                         <li key={a}>{a}</li>
                       ))}
                     </ul>
+                    <div className="mt-3 text-xs text-neon-green">Achievement Unlocked ✅</div>
                   </div>
                 </motion.div>
               ))}
@@ -90,10 +94,13 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
 
         <Section id="skills">
           <h2 className="text-3xl font-bold mb-6">Skills Playground</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {skills.map((s) => (
-              <SkillItem key={s.name} name={s.name} level={s.level} icon={<span>{s.icon}</span>} />
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <RadarChart labels={["Selenium","C#","SQL","API","CI/CD","Design"]} values={[90,85,80,88,82,75]} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {skills.map((s) => (
+                <SkillItem key={s.name} name={s.name} level={s.level} icon={<span>{s.icon}</span>} />
+              ))}
+            </div>
           </div>
         </Section>
 
