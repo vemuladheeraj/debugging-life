@@ -14,13 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
       - run: npm ci
-      - run: npm run build
+      - name: Build with Next.js (static export)
+        run: npm run build
         env:
           NODE_ENV: production
+          # Allow overriding repo name; default to GITHUB_REPOSITORY
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
