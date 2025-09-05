@@ -12,10 +12,10 @@ export default function SkillItem({ name, level = 80, icon }: SkillItemProps) {
       <div className="text-2xl">{icon || '🧩'}</div>
       <div className="flex-1">
         <div className="flex items-center justify-between mb-3">
-          <span className="font-semibold text-white">{name}</span>
-          <span className="text-sm text-zinc-400 font-medium">{level}%</span>
+          <span className="font-semibold text-gray-800">{name}</span>
+          <span className="text-sm text-gray-500 font-medium">{level}%</span>
         </div>
-        <div className="h-3 w-full bg-white/10 rounded-full overflow-hidden">
+        <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${level}%` }}
